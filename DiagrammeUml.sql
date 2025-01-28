@@ -17,15 +17,20 @@ class Salle {
 class Film {
     +id_film : int
     +titre : string
-    +genre : string
     +durée : int
+    +genre : string
 }
 
 class Seance {
     +id_seance : int
-    +horaire : datetime
-    +id_salle : int
     +id_film : int
+    +id_salle : int
+    +horaire : datetime
+}
+
+class Tarif {
+    +id_tarif : int
+    +prix : DECIMAL
 }
 
 class Client {
@@ -35,16 +40,19 @@ class Client {
 }
 
 class Reservation {
-    +id_reservation : int
     +id_client : int
+    +id_reservation : int
     +id_seance : int
+    +id_tarif int
     +nombre_places : int
+    +email : string
 }
 
 class Utilisateur {
     +id_utilisateur : int
     +nom : string
     +email : string
+    +mot_de_passe : string
     +type : string
     +id_cinema : int
 }

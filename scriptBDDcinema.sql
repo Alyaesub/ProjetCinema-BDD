@@ -9,7 +9,7 @@ CREATE TABLE Cinema (
 -- Création de la table Salle
 CREATE TABLE Salle (
     id_salle INT PRIMARY KEY AUTO_INCREMENT,
-    nom VARCHAR(255) NOT NULL,
+    numéro VARCHAR(255) NOT NULL,
     capacite INT NOT NULL,
     id_cinema INT,
     FOREIGN KEY (id_cinema) REFERENCES Cinema(id_cinema)
@@ -40,13 +40,20 @@ CREATE TABLE Tarif (
     prix DECIMAL(5, 2) NOT NULL
 );
 
+CREATE TABLE Client (
+    id_client INT PRIMARY KEY AUTO_INCREMENT,
+    id_nom VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+);
+
 -- Création de la table Réservation
 CREATE TABLE Reservation (
+    id_client VARCHAR(255) NOT NULL,
     id_reservation INT PRIMARY KEY AUTO_INCREMENT,
     id_seance INT,
     id_tarif INT,
-    nom_client VARCHAR(255) NOT NULL,
-    email_client VARCHAR(255),
+    nombre_places : INT
+    email_client VARCHAR(255) NOT NULL UNIQUE,
     FOREIGN KEY (id_seance) REFERENCES Seance(id_seance),
     FOREIGN KEY (id_tarif) REFERENCES Tarif(id_tarif)
 );
